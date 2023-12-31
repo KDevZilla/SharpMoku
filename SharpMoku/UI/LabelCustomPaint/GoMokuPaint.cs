@@ -467,6 +467,7 @@ ref toPointBorderY);
             }
 
             // Uncomment this code if you need to see Neighbor cell
+            //DANGER
             /*
             if(pLabel.CellAttribute.IsNeighborCell)
             {

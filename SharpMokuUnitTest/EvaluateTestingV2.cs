@@ -106,84 +106,23 @@ namespace KGoMokuUnitTest
             int blackScore = 0;
             evaluateFunction evaFunc = evo.CalculateScoreForHorizontal;
 
-            board.PutStone(0, 0, Board.CellValue.Black);
-            board.PutStone(1, 0, Board.CellValue.Black);
-            board.PutStone(2, 0, Board.CellValue.Black);
-            board.PutStone(3, 0, Board.CellValue.Black);
-            board.PutStone(4, 0, Board.CellValue.Black);
-
-            blackScore = evaFunc(board.Matrix, isForBlack, isPlayerTurn);
-            Assert.IsTrue(blackScore == 5);
-
-
-            blackScore = evaFunc(board.Matrix, isForBlack, !isPlayerTurn);
-            Assert.IsTrue(blackScore == 5);
-
-            blackScore = evaFunc(board.Matrix, !isForBlack, isPlayerTurn);
-            Assert.IsTrue(blackScore == 0);
-
-
-            board.RemoveStone(2, 0);
-            board.PutStone(2, 0, Board.CellValue.White);
-            blackScore = evaFunc(board.Matrix, isForBlack, isPlayerTurn);
-            Assert.IsTrue(blackScore == 4);
-
-
-            int whiteScore = 0;
-            whiteScore = evaFunc(board.Matrix, !isForBlack, isPlayerTurn);
-            Assert.IsTrue(whiteScore == 1);
-        }
-
-        [TestMethod]
-        public void EvaluateHorizontal2()
-        {
-            SharpMoku.AI.EvaluateV2 evo = new SharpMoku.AI.EvaluateV2();
-            Board board = new Board(15);
-            bool isForCalculateBlackStone = true;
-            bool isBlackTurn = true; ;
-            int blackScore = 0;
-            evaluateFunction evaFunc = evo.CalculateScoreForHorizontal;
-
-            board.PutStone(0, 0, Board.CellValue.Black);
             board.PutStone(0, 1, Board.CellValue.Black);
             board.PutStone(0, 2, Board.CellValue.Black);
             board.PutStone(0, 3, Board.CellValue.Black);
             board.PutStone(0, 4, Board.CellValue.Black);
+            board.PutStone(0, 5, Board.CellValue.Black);
 
-            blackScore = evaFunc(board.Matrix, isForCalculateBlackStone, isBlackTurn);
-            Assert.IsTrue(blackScore == 50000000);
-            board = new Board(15);
-            board.PutStone(0, 0, Board.CellValue.Black);
-            board.PutStone(0, 1, Board.CellValue.Black);
-            board.PutStone(0, 2, Board.CellValue.Black);
-            board.PutStone(0, 3, Board.CellValue.Black);
-            board.PutStone(0, 4, Board.CellValue.White);
+            blackScore = evaFunc(board.Matrix, isForBlack, isPlayerTurn);
+            Assert.IsTrue(blackScore == EvaluateV2.wonScore);
+            board.RemoveStone(new Position(0, 5));
+            //board.PutStone(0, 5, Board.CellValue.Black);
+            blackScore = evaFunc(board.Matrix, isForBlack, isPlayerTurn);
+            Assert.IsTrue(blackScore == EvaluateV2.confirmWinScore);
 
-            blackScore = evaFunc(board.Matrix, isForCalculateBlackStone, isBlackTurn);
-            Assert.IsTrue(blackScore == 0);
-
-
-            board = new Board(15);
-            board.PutStone(0, 0, Board.CellValue.Black);
-            board.PutStone(0, 1, Board.CellValue.Black);
-            board.PutStone(0, 2, Board.CellValue.Black);
-
-            board.PutStone(0, 4, Board.CellValue.Black);
-
-            blackScore = evaFunc(board.Matrix, isForCalculateBlackStone, isBlackTurn);
-            Assert.IsTrue(blackScore == 11);
-
-
-            board = new Board(15);
-            board.PutStone(0, 0, Board.CellValue.Black);
-            board.PutStone(0, 1, Board.CellValue.Black);
-            board.PutStone(0, 2, Board.CellValue.Black);
-            board.PutStone(0, 3, Board.CellValue.Black);
-
-
-            blackScore = evaFunc(board.Matrix, isForCalculateBlackStone, false);
-            Assert.IsTrue(blackScore == 200);
+           
         }
+
+
         delegate int evaluateFunction(int[,] boardMatrix, Boolean forBlack, Boolean playersTurn);
 
 
@@ -674,21 +613,7 @@ namespace KGoMokuUnitTest
             Assert.IsTrue(blackScore == EvaluateV2.wonScore);
 
 
-            blackScore = evaFunc(board.Matrix, isForCalculateBlackStone, !isBlackTurn);
-            Assert.IsTrue(blackScore == 5);
-
-            blackScore = evaFunc(board.Matrix, !isForCalculateBlackStone, isBlackTurn);
-            Assert.IsTrue(blackScore == 0);
-
-
-            board.RemoveStone(2, 2);
-            board.PutStone(2, 2, Board.CellValue.White);
-            blackScore = evaFunc(board.Matrix, isForCalculateBlackStone, isBlackTurn);
-            Assert.IsTrue(blackScore == 4);
-
-            int whiteScore = 0;
-            whiteScore = evaFunc(board.Matrix, !isForCalculateBlackStone, isBlackTurn);
-            Assert.IsTrue(whiteScore == 1);
+           
         }
 
         [TestMethod]

@@ -305,7 +305,8 @@ namespace SharpMoku.UI
              * set it to false if you want it to be more
              * easy for you to debug
              */
-            bool isUseGomokuNotation = true ;
+             //DANGER
+            bool isUseGomokuNotation = false ;
 
             for (i = 0; i < BoardSize; i++)
             {

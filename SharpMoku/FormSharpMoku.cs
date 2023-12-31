@@ -87,6 +87,9 @@ namespace SharpMoku
 
             const int cellWidth = 38;
             const int cellHeight = 38;
+
+            // If it is the first time to loadboard or the boardSize is different
+            // So we need to create a new picGoMoku
             if (picGoMoku == null ||
                     picGoMoku.NoofRow != boardSize)
             {
@@ -102,6 +105,7 @@ namespace SharpMoku
                 picGoMoku.BorderStyle = BorderStyle.FixedSingle;
 
                 picGoMoku.Left = 0;
+                picGoMoku.Top = this.menuStrip1.Height + 5;
                 picGoMoku.Initial(CurrentTheme);
                 picGoMoku.CellClicked -= PicGoMoku_CellClicked;
                 picGoMoku.CellClicked += PicGoMoku_CellClicked;
@@ -109,7 +113,8 @@ namespace SharpMoku
             }
             else
             {
-                picGoMoku.Top = this.menuStrip1.Height + 5;
+                //Using the old picGomoku
+                //picGoMoku.Top = this.menuStrip1.Height + 5;
                 picGoMoku.SetBoad(game.board);
                 picGoMoku.Initial(CurrentTheme);
             }
@@ -252,6 +257,7 @@ namespace SharpMoku
     Global.CurrentSettings.BotDepth,
     Global.CurrentSettings.ThemeEnum);
             undoToolStripMenuItem.Enabled = Global.CurrentSettings.IsAllowUndo;
+
 
 
         }
@@ -515,6 +521,14 @@ namespace SharpMoku
                 return;
             }
             Application.Exit();
+
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAbout f = new FormAbout();
+            f.StartPosition = FormStartPosition.CenterParent;
+            f.ShowDialog(this);
 
         }
     }

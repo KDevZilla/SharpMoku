@@ -320,6 +320,8 @@ namespace SharpMoku.AI
             {
                 return listCell;
             }
+            int opponentCellvalue = -(int)cellValue;
+            //First loop Insert cell
             for (i = 1; i < 5; i++)
             {
                 Position nextPosition = new Position(positionCheck.Row - positionDelta.Row * i,
@@ -335,19 +337,19 @@ namespace SharpMoku.AI
                 var nextValue = matrix[nextPosition.Row, nextPosition.Col];
                 if(!hshCellInaRow.Contains ( nextPosition.PositionString()))
                 {
-                    listCell.Insert(0, nextValue);
+                    listCell.Insert(0, nextValue); //We insert at the 0 position
                 }
                 
-                if ((int)nextValue == -(int)cellValue)
+                if ((int)nextValue == opponentCellvalue)
                 {
 
-                   // Position pos=new Position ()
-                   // listCell.Insert(0, nextValue);
                     break;
                 }
-                //listCell.Insert(0, nextValue);
+
             }
-            listCell.Add((int)cellValue);
+            listCell.Add((int)cellValue); //The cell itself
+
+            //Add
             for (i = 1; i < 5; i++)
             {
                 Position nextPosition = new Position(positionCheck.Row + positionDelta.Row * i,
@@ -363,9 +365,9 @@ namespace SharpMoku.AI
 
                 if (!hshCellInaRow.Contains(nextPosition.PositionString()))
                 {
-                    listCell.Add(nextValue);
+                    listCell.Add(nextValue);//We add it to the last position
                 }
-                if ((int)nextValue == -(int)cellValue)
+                if ((int)nextValue == opponentCellvalue)
                 {
                    // listCell.Insert(0, nextValue);
                     break;

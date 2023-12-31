@@ -71,60 +71,63 @@
             // toolStripMenuItemNewGame
             // 
             this.toolStripMenuItemNewGame.Name = "toolStripMenuItemNewGame";
+            this.toolStripMenuItemNewGame.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.toolStripMenuItemNewGame.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItemNewGame.Text = "New Game";
+            this.toolStripMenuItemNewGame.Text = "&New Game";
             this.toolStripMenuItemNewGame.Click += new System.EventHandler(this.toolStripMenuItemNewGame_Click);
             // 
             // toolStripMenuItemOption
             // 
             this.toolStripMenuItemOption.Name = "toolStripMenuItemOption";
-            this.toolStripMenuItemOption.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemOption.Size = new System.Drawing.Size(137, 22);
             this.toolStripMenuItemOption.Text = "Option";
             this.toolStripMenuItemOption.Click += new System.EventHandler(this.toolStripMenuItemOption_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(134, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(137, 22);
             this.toolStripMenuItem2.Text = "Save Board";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
             this.toolStripMenuItem1.Text = "Open Board";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(134, 6);
             // 
             // toolStripMenuItemOptionExit
             // 
             this.toolStripMenuItemOptionExit.Name = "toolStripMenuItemOptionExit";
-            this.toolStripMenuItemOptionExit.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemOptionExit.Size = new System.Drawing.Size(137, 22);
             this.toolStripMenuItemOptionExit.Text = "Exit";
             this.toolStripMenuItemOptionExit.Click += new System.EventHandler(this.toolStripMenuItemOptionExit_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.helpToolStripMenuItem.Text = "About";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Enabled = false;
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.undoToolStripMenuItem.Text = "Undo";
+            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.undoToolStripMenuItem.Text = "Undo ";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // FormSharpMoku

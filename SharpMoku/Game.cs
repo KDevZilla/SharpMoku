@@ -203,6 +203,7 @@ namespace SharpMoku
 
             if (WinResult == Board.WinStatus.NotDecidedYet)
             {
+                //DANGEROUS
                 this.board.SwitchTurn();
                 bool IsBotTurn = (GameMode == GameModeEnum.PlayerVsBot && !IsPlayer1Turn) ||
                                 (GameMode == GameModeEnum.BotVsPlayer && IsPlayer1Turn);
