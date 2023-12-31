@@ -1,0 +1,3 @@
+﻿Please don't remove this file. 
+The purpose of this file is to make visual studio 
+create Board folder when it build

@@ -1,0 +1,24 @@
+https://wallpapersafari.com/w/0H5Lkh
+
+R:224,
+G:187,
+G:108
+Board Background
+https://wallpaperaccess.com/full/1872.jpg
+https://tsumego-hero.com/large/texture39.png
+https://yewang.github.io/besogo/img/shinkaya1.jpg
+
+https://forums.online-go.com/t/board-backgrounds-library/29388
+
+Game Win,
+Game Lost
+https://mixkit.co/free-sound-effects/
+GoMove.wav:https://freesound.org/people/mh2o/sounds/351518/
+
+https://www.nordicgodojo.eu/post/212/a-simple-beginners-guide-to-go#
+stone image:nordicgodojo
+Border:9
+line:3
+intersection circle:16:16
+Image from this program
+https://github.com/featurecat/lizzie
