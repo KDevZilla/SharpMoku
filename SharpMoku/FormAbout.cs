@@ -25,8 +25,14 @@ namespace SharpMoku
         private void FormAbout_Load(object sender, EventArgs e)
         {
             this.Icon = Resource1.SharpMokuIcon;
+            this.UpdateUIColor(Global.BackColor, Global.ForeColor);
         }
-
+        private void UpdateUIColor(Color backColor, Color foreColor)
+        {
+            this.lblProgramName.ForeColor = foreColor;
+            this.linkLabel1.LinkColor = foreColor;
+            this.BackColor = backColor;
+        }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(this.linkLabel1.Text);
