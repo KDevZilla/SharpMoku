@@ -102,10 +102,7 @@ namespace SharpMoku.UI.LabelCustomPaint
     }
     public class GoMokuPaint : IExtendLabelCustomPaint
     {
-        /*
-         * Wooden texture credit::<a href='https://www.freepik.com/photos/rustic-wood'>Rustic wood photo created by lifeforstock - www.freepik.com</a>
-         * <a href='https://www.freepik.com/photos/wood-background'>Wood background photo created by rawpixel.com - www.freepik.com</a>
-         */
+
         private String whiteStoneImagePath = "";
         private String blackStoneImagePath = "";
         // private String boardBackgroundImagePath = "";
@@ -213,16 +210,8 @@ namespace SharpMoku.UI.LabelCustomPaint
             pfromPointBorderY = new Point(beginWidth + Space, endHeight);
             ptoPointBorderY = new Point(beginWidth + Space, endHeight);
         }
-        public void Paint(Graphics g, ExtendLabel pLabel)
+        private void PaintBorder(Graphics g, ExtendLabel pLabel)
         {
-
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            g.CompositingMode = CompositingMode.SourceCopy;
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.CompositingQuality = CompositingQuality.HighQuality;
-            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-
             Point fromPointY = Point.Empty;
             Point toPointY = Point.Empty;
             Point fromPointX = Point.Empty;
@@ -407,7 +396,7 @@ ref toPointBorderY);
 
                 }
             }
-            //Tuple<int, int> positionIntersec = new Tuple<int, int> ()
+
             g.CompositingMode = CompositingMode.SourceOver;
 
             if (pLabel.CellAttribute.IsIntersection)
@@ -415,16 +404,17 @@ ref toPointBorderY);
                 RectangleF RecCircleIntersecton = new RectangleF(middleWidth - 4, middleHeight - 4, 8, 8);
                 g.FillEllipse(ShareGraphicObject.SolidBrush(penTable.Color), RecCircleIntersecton);
             }
-
+        }
+        private RectangleF GetRectangleCircle(int labelWidth,int labelHeight)
+        {
             int Space = 1;
-            //RectangleF RecCircle = new RectangleF(Space, Space, pLabel.Width - (Space * 2), pLabel.Height - (Space * 2));
-            RectangleF RecCircle = new RectangleF(Space, Space, pLabel.Width - (Space * 2), pLabel.Height - (Space * 2));
-            /*
-            RectangleF RecCircleImage = new RectangleF(RecCircle.X + 0.25f,
-                RecCircle.Y + 0.25f,
-                RecCircle.Width - 0.5f,
-                RecCircle.Height - 0.5f);
-                */
+
+            return new RectangleF(Space, Space, labelWidth - (Space * 2), labelHeight - (Space * 2));
+            
+        }
+        public void PaintStone(Graphics g, ExtendLabel pLabel)
+        {
+            RectangleF RecCircle = GetRectangleCircle(pLabel.Width, pLabel.Height);
             RectangleF RecCircleImage = new RectangleF(RecCircle.X,
     RecCircle.Y,
     RecCircle.Width - 0.5f,
@@ -432,7 +422,7 @@ ref toPointBorderY);
 
             if (pLabel.CellAttribute.CellValue == Board.CellValue.White)
             {
-                //DrawShadow(g, RecCircle);
+
                 if (this.whiteStoneImagePath.Trim() != "")
                 {
 
@@ -448,7 +438,7 @@ ref toPointBorderY);
             }
             if (pLabel.CellAttribute.CellValue == Board.CellValue.Black)
             {
-                // DrawShadow(g, RecCircle);
+
 
                 if (this.blackStoneImagePath.Trim() != "")
                 {
@@ -456,8 +446,6 @@ ref toPointBorderY);
                 }
                 else
                 {
-                    //var shadowRectagle = new RectangleF(RecCircle.X + 3, RecCircle.Y + 3, RecCircle.Width-1, RecCircle.Height-1);
-                    //g.FillEllipse(ShareGraphicObject.SolidBrush(Color.LightGray ), shadowRectagle);
 
                     g.FillEllipse(ShareGraphicObject.SolidBrush(blackStoneBackColor), RecCircle);
                     g.DrawEllipse(ShareGraphicObject.Pen(blackStoneBorderColor, 0.2f), RecCircle);
@@ -466,52 +454,42 @@ ref toPointBorderY);
 
             }
 
-            // Uncomment this code if you need to see Neighbor cell
-            //DANGER
-            /*
-            if(pLabel.CellAttribute.IsNeighborCell)
+           
+        }
+        public void PaintNeighbour(Graphics g, ExtendLabel pLabel)
+        {
+
+            RectangleF RecCircle = GetRectangleCircle(pLabel.Width, pLabel.Height);
+            if (pLabel.CellAttribute.IsNeighborCell)
             {
-                //We Actually don't use this for actual gaming
-                //We paint NeighborCell to shows its position for explaining on Tutorial and for debugging purpose only
-                g.FillEllipse(ShareGraphicObject.SolidBrush(Color.Gray), RecCircle);
+                  g.FillEllipse(ShareGraphicObject.SolidBrush(Color.Gray), RecCircle);
 
             }
-            */
+        }
+        public void Paint(Graphics g, ExtendLabel pLabel)
+        {
+
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            g.CompositingMode = CompositingMode.SourceCopy;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+
+
+
+            PaintBorder(g, pLabel);
+            PaintStone(g, pLabel);
+
+
+            //We Actually don't use this for actual gaming
+            //We paint NeighborCell to shows its position for explaining the postion for Tutorial and for debugging purpose only
+            //Uncomment this code if you need to see Neighbor cell
+            //[DEBUG:]
+            //PaintNeighbour(g, pLabel);
+
         }
 
-        private void DrawShadow(Graphics g, RectangleF rectangle)
-        {
-            //Graphics g = e.Graphics;
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-            Color color = Color.Blue;
-            Color shadow = Color.FromArgb(255, 16, 16, 16);
-            /*
-            for (int i = 0; i < 8; i++)
-                using (SolidBrush brush = new SolidBrush(Color.FromArgb(80 - i * 10, shadow)))
-                {
-                    g.FillEllipse(brush, panel1.ClientRectangle.X + i * 2,
-                                         panel1.ClientRectangle.Y + i, 60, 60);
-                }
-            using (SolidBrush brush = new SolidBrush(color))
-                g.FillEllipse(brush, panel1.ClientRectangle.X, panel1.ClientRectangle.Y, 60, 60);
-                */
-            // move to the right to use the same coordinates again for the drawn shape
-            // g.TranslateTransform(80, 0);
-            // g.TranslateTransform(5, 5);
-            for (int i = 0; i < 8; i++)
-                //using (Pen pen = new Pen(Color.FromArgb(80 - i * 10, shadow), 0.5f))
-                using (Pen pen = new Pen(Color.FromArgb(80 - i * 10, shadow), 0.75f))
-                {
-                    rectangle = new RectangleF(rectangle.Left + (i * 0.75f) + 0.1f,
-                        rectangle.Top + (i * 0.75f) + 0.1f,
-                        rectangle.Width,
-                        rectangle.Height);
-                    g.DrawEllipse(pen, rectangle);
-                }
-            /*
-            using (Pen pen = new Pen(color))
-                g.DrawEllipse(pen, panel1.ClientRectangle.X, panel1.ClientRectangle.Y, 60, 60);
-                */
-        }
+
     }
 }
