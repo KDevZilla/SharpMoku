@@ -3,6 +3,10 @@
 ![Game](https://raw.githubusercontent.com/KDevZilla/ImageUpload/main/SharpMoku/SharpMoku01.png)  
  Gomoku/5 in a row game in C#  
 
+For the developer, you can look for more details here.  
+https://www.codeproject.com/Articles/5375122/SharpMoku-a-Gomoku-Five-in-a-row-written-in-Csharp
+
+
 ![Game](https://raw.githubusercontent.com/KDevZilla/ImageUpload/main/SharpMoku/SharpMoku02_Small.png)   
 
 ## How to play ##
