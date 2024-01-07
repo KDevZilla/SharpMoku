@@ -9,6 +9,11 @@ https://www.codeproject.com/Articles/5375122/SharpMoku-a-Gomoku-Five-in-a-row-wr
 
 ![Game](https://raw.githubusercontent.com/KDevZilla/ImageUpload/main/SharpMoku/SharpMoku02_Small.png)   
 
+![Game](https://github.com/KDevZilla/ImageUpload/blob/main/SharpMoku/ShapMoku_Animaton.gif)  
+This is an animation demonstrating how a bot moves and how many themes it supports.   
+
+
+
 ## How to play ##
 The rules of the game are the same as a normal Gomoku game https://en.wikipedia.org/wiki/Gomoku.
 
